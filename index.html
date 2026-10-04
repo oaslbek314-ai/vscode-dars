@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <title>VS Code da kod yozishni noldan o‘rganish</title>
+<meta name="description" content="VS Code o‘rnatish, birinchi fayl, tezkor tugmalar va Live Server — boshlang‘ichlar uchun oddiy darslar.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Code da Kod Yozishni Noldan O‘rganish</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid #334155;
+        }
+
+        header h1 {
+            font-size: 2.4rem;
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .lesson {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #334155;
+            transition: transform 0.2s;
+        }
+
+        .lesson:hover {
+            transform: translateY(-3px);
+        }
+
+        .lesson h2 {
+            color: #38bdf8;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lesson h2 span {
+            background: #0ea5e9;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .lesson p {
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+
+        .code-box {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 15px 0;
+            font-family: 'Cascadia Code', 'Fira Code', monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-box::before {
+            content: "Kod";
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 0.7rem;
+            color: #64748b;
+            background: #1e293b;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .tip {
+            background: #0c4a6e;
+            border-left: 4px solid #0ea5e9;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+
+        .warning {
+            background: #422006;
+            border-left: 4px solid #f59e0b;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #0ea5e9;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #0284c7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #64748b;
+            border-top: 1px solid #334155;
+            margin-top: 40px;
+        }
+
+        .progress {
+            height: 6px;
+            background: #334155;
+            border-radius: 3px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+            width: 0%;
+            transition: width 0.5s;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .lesson {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>VS Code da Kod Yozish</h1>
+    <p>Noldan professional darajaga — oddiy va tushunarli</p>
+</header>
+
+<div class="container">
+
+    <!-- Progress -->
+    <div class="progress">
+        <div class="progress-bar" id="progress"></div>
+    </div>
+
+    <!-- 1-dars -->
+    <div class="lesson" data-lesson="1">
+        <h2><span>1</span> VS Code nima va qanday o‘rnatiladi?</h2>
+        <p>
+            <strong>Visual Studio Code (VS Code)</strong> — Microsoft tomonidan yaratilgan, bepul va eng mashhur kod yozish dasturi.
+            U Python, JavaScript, HTML, CSS, C++, Java va boshqa deyarli barcha tillarni qo‘llab-quvvatlaydi.
+        </p>
+
+        <div class="tip">
+            <strong>Maslahat:</strong> Rasmiy saytdan yuklab ol: 
+            <a href="https://code.visualstudio.com" target="_blank" style="color:#38bdf8;">code.visualstudio.com</a>
+        </div>
+
+        <p><strong>O‘rnatish qadamlari:</strong></p>
+        <ol style="padding-left: 20px; color:#cbd5e1;">
+            <li>Saytga kirib, “Download” tugmasini bosing</li>
+            <li>Windows / Mac / Linux versiyasini tanlang</li>
+            <li>Yuklangan faylni ochib, “Next → Next → Install” bosing</li>
+            <li>O‘rnatib bo‘lgach, VS Code ni ishga tushiring</li>
+        </ol>
+    </div>
+
+    <!-- 2-dars -->
+    <div class="lesson" data-lesson="2">
+        <h2><span>2</span> Interfeysni tushunish</h2>
+        <p>VS Code ochilganda quyidagi asosiy qismlarni ko‘rasiz:</p>
+        
+        <ul style="padding-left: 20px; color:#cbd5e1; margin: 15px 0;">
+            <li><strong>Explorer</strong> (chap tomonda) — fayllar va papkalar</li>
+            <li><strong>Editor</strong> (o‘rtada) — kod yoziladigan joy</li>
+            <li><strong>Terminal</strong> (pastda) — buyruqlar yoziladi</li>
+            <li><strong>Extensions</strong> — qo‘shimcha dasturlar (plaginlar)</li>
+        </ul>
+
+        <div class="tip">
+            Terminalni ochish: <code>Ctrl + `</code> (backtick tugmasi)
+        </div>
+    </div>
+
+    <!-- 3-dars -->
+    <div class="lesson" data-lesson="3">
+        <h2><span>3</span> Birinchi faylni yaratish</h2>
+        <p>Keling, oddiy HTML fayl yaratamiz:</p>
+
+        <ol style="padding-left: 20px; color:#cbd5e1;">
+            <li>VS Code da <strong>File → Open Folder</strong> bosing</li>
+            <li>Yangi papka yarating (masalan: <code>mening-saytim</code>)</li>
+            <li>Chap tomonda Explorer da o‘ng tugma → <strong>New File</strong></li>
+            <li>Fayl nomini <code>index.html</code> deb yozing</li>
+        </ol>
+
+        <div class="code-box">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Mening birinchi sahifam&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Salom, dunyo!&lt;/h1&gt;
+    &lt;p&gt;Men VS Code da kod yozishni o‘rganmoqdaman.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+        </div>
+
+        <div class="tip">
+            Faylni saqlash: <code>Ctrl + S</code>
+        </div>
+    </div>
+
+    <!-- 4-dars -->
+    <div class="lesson" data-lesson="4">
+        <h2><span>4</span> Eng muhim qisqa tugmalar (Shortcuts)</h2>
+        
+        <div class="code-box">
+Ctrl + S          → Faylni saqlash
+Ctrl + `          → Terminalni ochish/yopish
+Ctrl + B          → Chap panelni yashirish/ko‘rsatish
+Ctrl + P          → Tezkor fayl qidirish
+Ctrl + Shift + P  → Barcha buyruqlar
+Ctrl + /          → Kodni kommentga olish
+Alt + ↑ / ↓       → Qatorni yuqoriga/pastga ko‘chirish
+Ctrl + D          → Bir xil so‘zlarni tanlash
+        </div>
+
+        <div class="warning">
+            <strong>Eslatma:</strong> Mac da Ctrl o‘rniga <code>Cmd</code> ishlatiladi.
+        </div>
+    </div>
+
+    <!-- 5-dars -->
+    <div class="lesson" data-lesson="5">
+        <h2><span>5</span> Muhim Extensions (Plaginlar)</h2>
+        <p>VS Code kuchliroq bo‘lishi uchun quyidagi plaginlarni o‘rnating:</p>
+
+        <ul style="padding-left: 20px; color:#cbd5e1;">
+            <li><strong>Live Server</strong> — HTML sahifani real vaqtda ko‘rish</li>
+            <li><strong>Prettier</strong> — kodni avtomatik chiroyli qilish</li>
+            <li><strong>Python</strong> — Python uchun</li>
+            <li><strong>ESLint</strong> — JavaScript xatolarini topish</li>
+            <li><strong>Auto Rename Tag</strong> — HTML teglarini avtomatik o‘zgartirish</li>
+            <li><strong>Material Icon Theme</strong> — chiroyli ikonkalar</li>
+        </ul>
+
+        <div class="tip">
+            Extensions ochish: chap tomondagi to‘rtburchak ikonka yoki <code>Ctrl + Shift + X</code>
+        </div>
+    </div>
+
+    <!-- 6-dars -->
+    <div class="lesson" data-lesson="6">
+        <h2><span>6</span> Live Server bilan ishlash</h2>
+        <p>Live Server o‘rnatganingizdan keyin:</p>
+
+        <ol style="padding-left: 20px; color:#cbd5e1;">
+            <li><code>index.html</code> faylini oching</li>
+            <li>O‘ng pastki burchakda <strong>Go Live</strong> tugmasini bosing</li>
+            <li>Brauzer avtomatik ochiladi</li>
+            <li>Kodni o‘zgartirsangiz, sahifa avtomatik yangilanadi</li>
+        </ol>
+
+        <div class="tip">
+            Bu eng qulay usul — har saqlaganda sahifa yangilanadi!
+        </div>
+    </div>
+
+    <!-- 7-dars -->
+    <div class="lesson" data-lesson="7">
+        <h2><span>7</span> Keyingi qadamlar</h2>
+        <p>Endi siz asoslarni bildingiz. Keyingi bosqichlar:</p>
+
+        <ul style="padding-left: 20px; color:#cbd5e1;">
+            <li>HTML + CSS o‘rganish</li>
+            <li>JavaScript o‘rganish</li>
+            <li>Git va GitHub bilan ishlash</li>
+            <li>Python yoki boshqa til tanlash</li>
+        </ul>
+
+        <a href="https://www.w3schools.com" target="_blank" class="btn">W3Schools da davom etish</a>
+        <a href="https://developer.mozilla.org" target="_blank" class="btn" style="margin-left:10px; background:#334155;">MDN Docs</a>
+    </div>
+
+</div>
+
+<footer>
+    <p>VS Code da kod yozishni noldan o‘rganish | 2025</p>
+    <p style="margin-top:8px; font-size:0.9rem;">Bu sayt faqat o‘quv maqsadida yaratilgan</p>
+</footer>
+
+<script>
+    // Progress bar
+    const lessons = document.querySelectorAll('.lesson');
+    const progressBar = document.getElementById('progress');
+    
+    function updateProgress() {
+        const scrolled = window.scrollY;
+        const total = document.body.scrollHeight - window.innerHeight;
+        const percent = (scrolled / total) * 100;
+        progressBar.style.width = percent + '%';
+    }
+    
+    window.addEventListener('scroll', updateProgress);
+    updateProgress();
+</script>
+
+</body>
+</html>
